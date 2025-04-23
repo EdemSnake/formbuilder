@@ -22,7 +22,7 @@ const formDefinition = {
       name: "age",
       label: "Возраст",
       type: "number",
-      placeholder: "18",
+      placeholder: "Выберите возраст",
       required: false,
       min: 0,
       max: 120,

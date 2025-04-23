@@ -1,5 +1,6 @@
 export function CheckboxField({ field, value, onChange, classNames }) {
-    return (
+  return (
+    <label className={classNames.checkboxLabel}>
       <input
         id={field.name}
         name={field.name}
@@ -9,5 +10,7 @@ export function CheckboxField({ field, value, onChange, classNames }) {
         required={field.required}
         className={classNames.inputCheckbox}
       />
-    );
-  }
+      {field.label}
+    </label>
+  );
+}

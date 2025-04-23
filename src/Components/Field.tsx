@@ -1,21 +1,36 @@
+import React from "react";
 import { CheckboxField } from "./CheckboxField";
 import { SelectField } from "./SelectField";
 import { TextField } from "./TextField";
 
-export const Field = ({ field, value, onChange, classNames }) => {
+const COMPONENT_MAP = {
+  select: SelectField,
+  checkbox: CheckboxField,
+  text: TextField,
+  email: TextField,
+  number: TextField,
+};
 
+ const FieldComponent = ({ field, value, onChange,error, classNames }) => {
+  const Component = COMPONENT_MAP[field.type] || TextField;
   return (
-    <div key={field.name}>
-      <label className={classNames.label} htmlFor={field.name}>{field.label}</label>
-      {field.type === 'select' && (
-        <SelectField classNames={classNames} field={field} value={value} onChange={onChange} />
+    <div key={field.name} className={classNames.field}>
+      {field.type !== "checkbox" && (
+        <label className={classNames.label} htmlFor={field.name}>
+          {field.label}
+        </label>
       )}
-      {field.type === 'checkbox' && (
-        <CheckboxField  classNames={classNames}  field={field} value={value} onChange={onChange} />
-      )}
-      {field.type !== 'select' && field.type !== 'checkbox' && (
-        <TextField  classNames={classNames}  field={field} value={value} onChange={onChange} />
-      )}
+
+      <Component
+        field={field}
+        value={value}
+        onChange={onChange}
+        classNames={classNames}
+      />
+      {error && <div className={classNames.error}>{error}</div>}
     </div>
   );
 };
+
+// React.memo will skip re-render if field/value/error/onChange/classNames are ===
+export const Field = React.memo(FieldComponent)
