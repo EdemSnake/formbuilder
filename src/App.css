@@ -1,0 +1,36 @@
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+.field {
+  margin-bottom: 16px;
+}
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+.input-text,
+.input-select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input-checkbox {
+  margin-right: 8px;
+}
+.btn-submit {
+  padding: 10px 16px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-submit:hover {
+  background: #0056b3;
+}
